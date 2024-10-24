@@ -335,6 +335,9 @@
       <span class="links-of-author-item">
         <a href="https://github.com/wansong886" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wansong886" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wansong886@gmail.com" title="E-Mail → mailto:wansong886@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
   </div>
 
 
@@ -365,11 +368,57 @@
   <span class="author" itemprop="copyrightHolder">椰树上的椰子果</span>
 </div>
 
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
--->
+<!-- 添加网站运行时间和访问统计 -->
+  <div class="website-info">
+    <!-- 运行时间 -->
+    <div class="run-time">
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+    </div>
 
+    <!-- 不蒜子统计 -->
+      <div class="busuanzi-count">
+        <span class="site-uv">
+          <i class="fa fa-user"></i>
+          访客<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人
+        </span>
+        <span class="site-pv">
+          <i class="fa fa-eye"></i>
+          访问<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次
+        </span>
+      </div>
+  </div>
+
+  <script>
+    function createtime() {
+      var now = new Date();
+      var grt = new Date("2024-10-23 00:00:00");
+      var days = (now - grt) / 1000 / 60 / 60 / 24;
+      var dnum = Math.floor(days);
+      var hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+      var hnum = Math.floor(hours);
+      if (String(hnum).length == 1) {
+        hnum = "0" + hnum;
+      }
+      var minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+      var mnum = Math.floor(minutes);
+      if (String(mnum).length == 1) {
+        mnum = "0" + mnum;
+      }
+      var seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      var snum = Math.round(seconds);
+      if (String(snum).length == 1) {
+        snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+      document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    createtime();
+    setInterval(createtime, 250);
+  </script>
+
+  <!-- 不蒜子统计脚本 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
