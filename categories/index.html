@@ -424,31 +424,47 @@
 
 <script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'y4Fh4oSyK5ae9CibRuRgePam-gzGzoHsz',
-      appKey     : '3m2V0iXRQbv02seFLqNo8eXQ',
-      placeholder: "可以输入昵称给椰子留言哦！",
-      avatar     : 'hide',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
+ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+   var GUEST = ['nick', 'mail', 'link'];
+   var guest = 'nick';
+   guest = guest.split(',').filter(item => {
+     return GUEST.includes(item);
+   });
+   new Valine({
+     el         : '#valine-comments',
+     verify     : false,
+     notify     : false,
+     appId      : 'y4Fh4oSyK5ae9CibRuRgePam-gzGzoHsz',
+     appKey     : '3m2V0iXRQbv02seFLqNo8eXQ',
+     placeholder: "可以给椰子留言哦！",
+     avatar     : 'hide',
+     meta       : guest,
+     pageSize   : '10' || 10,
+     visitor    : false,
+     lang       : 'zh-cn' || 'zh-cn',
+     path       : location.pathname,
+     recordIP   : false,
+     serverURLs : '',
+     enableQQ   : false,
+     enableBrand: false,
+     enableUA   : false,
+     emojiCDN   : '',
+     powerMode  : false,
+     tagMeta    : [],
+     showFactor : false,
+     requiredFields: ['nick'],
+     // 添加自定义配置
+     region     : 'cn-n1',      // 服务器区域设置
+     showPower  : false,        // 不显示脚注
+     showVolatility: false,     // 不显示环境信息
+     showSource : false,        // 不显示系统版本
+     hideComments: false,       // 不隐藏评论框
+     customStyle: true,         // 启用自定义样式
+     // 自定义样式
+     customCSS  : `.vpanel{display:none !important} .vpower{display:none !important} .v .vinfo{display:none !important}`
+   });
+ }, window.Valine);
 });
 </script>
-
 </body>
 </html>
