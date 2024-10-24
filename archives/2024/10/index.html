@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wansong886.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"wansong886.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"valine":{"text":"评论","order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习与生活齐头并进！">
@@ -442,70 +442,52 @@
 
 <script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'y4Fh4oSyK5ae9CibRuRgePam-gzGzoHsz',
-      appKey     : '3m2V0iXRQbv02seFLqNo8eXQ',
-      placeholder: "可以输入昵称给椰子留言哦！",
-      avatar     : 'hide',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : false,
-      lang       : 'zh-cn' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : '',
-      enableQQ   : false,
-      enableBrand: false,
-      enableUA   : false,
-      emojiCDN   : '',
-      powerMode  : false,
-      tagMeta    : [],
-      showFactor : false,
-      requiredFields: ['nick'],
-      showPower  : false,
-      showVolatility: false,
-      showSource : false,
-      hideComments: false,
-      customStyle: true,
-      customCSS  : `
-        .vpanel{display:none !important}
-        .vpower{display:none !important}
-        .v .vinfo{display:none !important}
-        .vsys{display:none !important}
-        .vhead .vsys{display:none !important}
-        .vh .vsys{display:none !important}
-        .v[data-class=v] .vwrap .vheader .vinput{width:100%}
-        .vemoji-btn{display:none !important}
-        .vpreview-btn{display:none !important}
-        .vcopy-notice{display:none !important}
-        .power{display:none !important}
-      `
-    });
-  }, window.Valine);
+ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+   var GUEST = ['nick', 'mail', 'link'];
+   var guest = 'nick';
+   guest = guest.split(',').filter(item => {
+     return GUEST.includes(item);
+   });
+   new Valine({
+     el         : '#valine-comments',
+     verify     : false,
+     notify     : false,
+     appId      : 'y4Fh4oSyK5ae9CibRuRgePam-gzGzoHsz',
+     appKey     : '3m2V0iXRQbv02seFLqNo8eXQ',
+     placeholder: "可以输入昵称给椰子留言哦！",
+     avatar     : 'hide',
+     meta       : guest,
+     pageSize   : '10' || 10,
+     visitor    : false,
+     lang       : 'zh-cn' || 'zh-cn',
+     path       : location.pathname,
+     recordIP   : false,
+     serverURLs : '',
+     enableUA   : false,         // 禁用UA标记
+     showPower  : false,        // 禁用Valine版权信息
+     enableQQ   : false,        // 禁用QQ标记
+     requiredFields: ['nick'],  // 只需要昵称
+     anonymous  : '神秘人'      // 设置匿名用户显示名称
+   });
+ }, window.Valine);
 });
 </script>
 
 <style>
-.v .vwrap .vheader .vinput {
-  width: 100% !important;
-}
 .vsys, .vpower {
-  display: none !important;
+ display: none !important;
 }
-.vemoji-btn, .vpreview-btn {
-  display: none !important;
+.vinfo {
+ display: none !important;
+}
+.vpreview-btn {
+ display: none !important;
 }
 .vcopy-notice {
-  display: none !important;
+ display: none !important;
+}
+.vnick {
+ width: 100% !important;  
 }
 </style>
 </body>
