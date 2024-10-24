@@ -1173,7 +1173,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #cf8b2f;
+  background: #3399db;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1376,6 +1376,7 @@ pre .javascript .function {
   color: #999;
   font-size: 0.875em;
   padding: 15px 0;
+  background: transparent;
 }
 .footer-inner {
   box-sizing: border-box;
@@ -1393,10 +1394,34 @@ pre .javascript .function {
     width: 73%;
   }
 }
+.footer-inner:after {
+  content: none !important;
+}
 .with-love {
   color: #ff0000;
   display: inline-block;
   margin: 0 5px;
+}
+.copyright {
+  color: #999;
+}
+.powered-by,
+.theme-info {
+  display: inline-block;
+  margin: 0 10px;
+}
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 10px 0;
+  }
+  .footer-inner {
+    font-size: 0.9em;
+  }
+}
+@media screen and (max-height: 800px) {
+  .footer {
+    padding: 10px 0;
+  }
 }
 @-moz-keyframes iconAnimate {
   0%, 100% {
